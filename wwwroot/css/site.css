@@ -1,0 +1,163 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+}
+svg {
+    display: block;
+    margin: auto;
+    width: auto;
+    height: auto;
+}
+.wrapper {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    height: 100vh;
+}
+
+.wrapperTop {
+    -ms-flex-order: 0;
+    order: 0;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    -ms-flex-item-align: auto;
+    align-self: auto;
+}
+
+.wrapperMiddle {
+    -ms-flex-order: 0;
+    order: 0;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    -ms-flex-item-align: auto;
+    align-self: auto;
+    overflow-y: auto;
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 10px;
+}
+
+.wrapperBottom {
+    -ms-flex-order: 0;
+    order: 0;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    -ms-flex-item-align: auto;
+    align-self: auto;
+}
+
+
+.customTableButton1 {
+    margin: 0;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    background: none;
+}
+.customTableButton1 {
+    cursor: pointer;
+}
+    .customTableButton1 svg {
+        width: 30px;
+        fill: #00aeef;
+    }
+
+body.IE-is-here .customTableButton1 svg {
+    height: 30px;
+}
+
+.customTableButton1:hover svg {
+    fill: #325974;
+}
+
+.wrapperTopRight {
+    float: right;
+    padding: 10px;
+}
+.wrapperTopLeft {
+    float: left;
+    padding: 10px;
+}
+.wrapperBottomLeft {
+    float: left;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+.wrapperBottomRight {
+    float: right;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}.e-input-picture::before {
+     content: '\e335';
+     font-family: e-icons;
+ }
+
+.bootstrap4 .e-input-picture:before {
+    content: '\e776';
+}
+
+.e-input-calendar::before {
+    content: '\e901';
+    font-family: e-icons;
+    font-size: 13px;
+}
+
+.fabric .e-input-calendar:before {
+    content: '\e93a';
+}
+
+.bootstrap .e-input-calendar:before {
+    content: '\e960';
+}
+
+.bootstrap4 .e-input-calendar:before {
+    content: '\e7be';
+}
+
+.highcontrast .e-input-calendar:before {
+    content: '\e93a';
+}
+
+.content-wrapper {
+    width: 90%;
+    margin: 0 auto;
+    min-width: 85px;
+}
+
+.content-wrapper div.row {
+    padding: 15px 0px;
+}
+
+.custom-padding-05 {
+    padding-top: 5px;
+}
+
+@@media only screen and (max-width: 480px) {
+     .content-wrapper {
+         width: 92%;
+     }
+
+     .col-xs-6,
+     .col-xs-4,
+     .col-xs-12 {
+         padding: 10px 5px;
+         width: 100%;
+     }
+
+     .content-wrapper div.row {
+         padding: 0px;
+     }
+ }
+
+#description td {
+    vertical-align: top;
+}

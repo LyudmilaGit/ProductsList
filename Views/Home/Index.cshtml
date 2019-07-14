@@ -1,0 +1,38 @@
+@model ProductListModel[]
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="control-section">
+    <ejs-button id="addBtn" content="Add New Product" cssClass="e-info"></ejs-button>
+
+    <ejs-grid id="Grid" toolbar="@(new List<string>() {"Search"})" dataSource="Model" allowPaging="true" allowTextWrap="true" allowSorting="true" allowFiltering="true">
+        <e-grid-pagesettings pageCount="5"></e-grid-pagesettings>
+        <e-grid-filterSettings type="Menu"></e-grid-filterSettings>
+        <e-grid-columns>
+            <e-grid-column field="Id" headerText="Id" width="100"></e-grid-column>
+            <e-grid-column field="Code" headerText="Code" width="120"></e-grid-column>
+            <e-grid-column field="Name" headerText="Name" width="100%"></e-grid-column>
+            <e-grid-column field="Category" headerText="Category" width="200"></e-grid-column>
+            <e-grid-column field="Price" headerText="Price USD" format="C2" width="110"></e-grid-column>
+            <e-grid-column field="Id" headerText="Edit" template="#actionEditTemplate" allowFiltering="false" allowSorting="false" width="100"></e-grid-column>
+            <e-grid-column field="Id" headerText="Delete" template="#actionDeleteTemplate" width="100" allowFiltering="false" allowSorting="false"></e-grid-column>
+
+        </e-grid-columns>
+    </ejs-grid>
+</div>
+
+<script>
+    document.getElementById('addBtn').onclick = function() {
+        window.location = '@Url.Action("EditProduct", new { id = 0 })';
+    };
+</script>
+<script id="actionDeleteTemplate" type="text/x-template">
+    <a href="@Url.Action("DeleteProduct")/${Id}" data-id="${Id}" class="customTableButton1">
+        <img src="@Url.Content("~/images/database_delete.png")" alt="" />
+    </a>
+</script>
+<script id="actionEditTemplate" type="text/x-template">
+    <a href="@Url.Action("EditProduct")/${Id}" data-id="${Id}" class="customTableButton1">
+        <img src="@Url.Content("~/images/edit.png")" alt="" />
+    </a>
+</script>

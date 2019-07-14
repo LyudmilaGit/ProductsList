@@ -1,0 +1,11 @@
+C:\Users\CBOUkr\source\repos\ProductsList\bin\Debug\netcoreapp2.0\ProductsList.deps.json
+C:\Users\CBOUkr\source\repos\ProductsList\bin\Debug\netcoreapp2.0\ProductsList.runtimeconfig.json
+C:\Users\CBOUkr\source\repos\ProductsList\bin\Debug\netcoreapp2.0\ProductsList.runtimeconfig.dev.json
+C:\Users\CBOUkr\source\repos\ProductsList\bin\Debug\netcoreapp2.0\ProductsList.dll
+C:\Users\CBOUkr\source\repos\ProductsList\bin\Debug\netcoreapp2.0\ProductsList.pdb
+C:\Users\CBOUkr\source\repos\ProductsList\obj\Debug\netcoreapp2.0\ProductsList.csprojAssemblyReference.cache
+C:\Users\CBOUkr\source\repos\ProductsList\obj\Debug\netcoreapp2.0\ProductsList.csproj.CoreCompileInputs.cache
+C:\Users\CBOUkr\source\repos\ProductsList\obj\Debug\netcoreapp2.0\ProductsList.AssemblyInfoInputs.cache
+C:\Users\CBOUkr\source\repos\ProductsList\obj\Debug\netcoreapp2.0\ProductsList.AssemblyInfo.cs
+C:\Users\CBOUkr\source\repos\ProductsList\obj\Debug\netcoreapp2.0\ProductsList.dll
+C:\Users\CBOUkr\source\repos\ProductsList\obj\Debug\netcoreapp2.0\ProductsList.pdb

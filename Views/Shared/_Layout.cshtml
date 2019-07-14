@@ -1,0 +1,99 @@
+﻿@{
+    string message = this.ViewBag.Message ?? string.Empty;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    </environment>
+<link rel="stylesheet" href="~/css/ej2/material.css" />
+
+<script src="~/js/ej2/ej2.min.js"></script>
+
+</head>
+<body>
+<div class="wrapper">
+    <div class="wrapperTop">
+        <div class="wrapperTopLeft">
+            @Html.ActionLink("Home page", "Index", "Home")
+        </div>
+        <div class="wrapperTopRight">
+            <ejs-button id="signIn" content="Sign In" cssClass="e-info"></ejs-button>
+        </div>
+    </div>
+    <div class="wrapperMiddle">
+        @RenderBody()
+    </div>
+    <div class="wrapperBottom">
+        <div class="wrapperBottomRight">
+            @Html.ActionLink("Privacy & Terms", "PrivacyAndTerms", "Home") |
+            @Html.ActionLink("Settings", "Settings", "Home")
+                
+        </div>
+        <div class="wrapperBottomLeft">
+            @Html.ActionLink("Business", "Business", "Home") |
+            @Html.ActionLink("About", "About", "Home")
+        </div>
+    </div>
+</div>
+    <ejs-toast id="toast_type">
+        <e-toast-position X="Right"></e-toast-position>
+    </ejs-toast>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+            asp-fallback-src="~/js/jquery.min.js"
+            asp-fallback-test="window.jQuery"
+            crossorigin="anonymous"
+            integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+    </script>
+
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous">
+        </script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+    <ejs-scripts></ejs-scripts>
+    @RenderSection("Scripts", required: false)
+    @if (!string.IsNullOrEmpty(message))
+    {
+    <script type="text/javascript">
+            setTimeout(
+                () => {
+                    var toastObj = document.getElementById('toast_type').ej2_instances[0];
+                    toastObj.target = document.body;
+                    @if(message != "")
+                    {
+                        <text>
+                        toastObj.show({ title: 'Information!', content: '@message', cssClass: 'e-toast-info', icon: 'e-info toast-icons' });
+                        </text>
+                    }
+                }, 500);
+    </script>
+    }
+</body>
+</html>

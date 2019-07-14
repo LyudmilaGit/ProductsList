@@ -1,0 +1,48 @@
+﻿@model Products
+
+@{
+    ViewBag.Title = "Product";
+    Layout = "_Layout";
+    IDictionary<string, object> submit = new Dictionary<string, object>();
+    submit.Add("type", "submit");
+}
+<form id="productForm" method="post">
+    @Html.HiddenFor(m => m.Id)
+    <div class="col-lg-12 control-section">
+        <div class="content-wrapper">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                    <b>Product Card</b>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                    <ejs-textbox id="Code" placeholder="Code" floatLabelType="Auto" ejs-for="@Model.Code"></ejs-textbox>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                    <ejs-textbox id="Name" placeholder="Name" ejs-for="@Model.Name" floatLabelType="Auto"></ejs-textbox>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                    <ejs-numerictextbox id="Price" placeholder="Price" ejs-for="@Model.Price" floatLabelType="Auto"></ejs-numerictextbox>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                    <ejs-combobox id="CategoryId" showClearButton="false" autofill="true" placeholder="Category" floatLabelType="Auto"
+                                  popupHeight="200px" ejs-for="@Model.CategoryId" value="@Model.CategoryId">
+                        <e-data-manager adaptor="UrlAdaptor" url="@Url.Action("GetCategories")" crossDomain="true"></e-data-manager>
+                        <e-combobox-fields text="Name" value="Id"></e-combobox-fields>
+                    </ejs-combobox>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                    <ejs-checkbox id="IsActive" label="Active" floatLabelType="Auto" ejs-for="@Model.IsActive"></ejs-checkbox>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                    <ejs-button id="saveBtn" content="Save" cssClass="e-info" htmlAttributes="submit"></ejs-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

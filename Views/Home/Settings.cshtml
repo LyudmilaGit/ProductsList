@@ -1,0 +1,110 @@
+﻿@model ProductsList.Models.Categories[]
+
+@{
+    ViewBag.Title = "Category Settings";
+    Layout = "_Layout";
+    var promptbutton = new { content = "Save", isPrimary = true };
+    var promptbutton1 = new { content = "Cancel", };
+    var promptanimation = new Syncfusion.EJ2.Popups.DialogAnimationSettings { Effect = Syncfusion.EJ2.Popups.DialogEffect.None };
+}
+
+<div class="control-section"  id="target">
+    <ejs-button id="addBtn" content="Add New Category" cssClass="e-info"></ejs-button>
+
+    <ejs-grid id="Grid" toolbar="@(new List<string>() {"Search"})" dataSource="Model" allowPaging="true" allowTextWrap="true" allowSorting="true" allowFiltering="true">
+        <e-grid-pagesettings pageCount="5"></e-grid-pagesettings>
+        <e-grid-filterSettings type="Menu"></e-grid-filterSettings>
+        <e-grid-columns>
+            <e-grid-column field="Id" headerText="Id" width="100"></e-grid-column>
+            <e-grid-column field="Name" headerText="Name" width="100%"></e-grid-column>
+            <e-grid-column field="Id" headerText="Edit" template="#actionEditTemplate" allowFiltering="false" allowSorting="false" width="100"></e-grid-column>
+            <e-grid-column field="Id" headerText="Delete" template="#actionDeleteTemplate" width="100" allowFiltering="false" allowSorting="false"></e-grid-column>
+        </e-grid-columns>
+    </ejs-grid>
+</div>
+
+<ejs-dialog id="prompt_dialog" animationSettings="promptanimation" open="dialogOpen"  visible="false" target="#target" width="380px"
+            header="Category"
+            content="<input type='hidden' id='categoryId'><input type='input' id='categoryName' name='categoryName' class='e-input'>">
+    <e-dialog-buttons>
+        <e-dialog-dialogbutton buttonModel="promptbutton" click="promptBtnClickSave"></e-dialog-dialogbutton>
+        <e-dialog-dialogbutton buttonModel="promptbutton1" click="promptBtnClick"></e-dialog-dialogbutton>
+    </e-dialog-buttons>
+</ejs-dialog>
+
+<script id="actionDeleteTemplate" type="text/x-template">
+    <button data-id="${Id}"  class="customTableButton1 deletebtn">
+        <img src="@Url.Content("~/images/database_delete.png")" alt="" />
+    </button>
+</script>
+<script id="actionEditTemplate" type="text/x-template">
+    <button data-id="${Id}" data-name="${Name}" class="customTableButton1 editbtn">
+        <img src="@Url.Content("~/images/edit.png")" alt="" />
+    </button>
+</script>
+
+
+
+<script type="text/javascript">
+    function promptBtnClickSave() {
+        var id = $('#categoryId').val();
+        var name = $('#categoryName').val();
+        if (name != '') {
+            $.ajax({
+                url: '@Url.Action("SaveCategory", "Home")',
+                type: 'POST',
+                data: {
+                    name: name,
+                    id: id
+                },
+                traditional: true,
+                dataType: 'json'
+            }).done(function (response) {
+                document.location.reload(true);
+            });
+        }
+    }
+
+    function promptBtnClick() {
+        var dialogObj = document.getElementById('prompt_dialog').ej2_instances[0];
+        dialogObj.hide();
+    }
+
+    function dialogOpen() {}
+</script>
+@section Scripts
+    {
+    <script type="text/javascript">
+        $('#addBtn').click(function(e) {
+            $('#categoryId').val('');
+            $('#categoryName').val('');
+            var dialogObj = document.getElementById('prompt_dialog').ej2_instances[0];
+            dialogObj.show();
+        });
+        $(document).on('click', '.editbtn',
+            function (e) {
+                var id = $(this).data('id');
+                var name = $(this).data('name');
+                $('#categoryId').val(id);
+                $('#categoryName').val(name);
+                var dialogObj = document.getElementById('prompt_dialog').ej2_instances[0];
+                dialogObj.show();
+            });
+
+        $(document).on('click', '.deletebtn',
+            function (e) {
+                var id = $(this).data('id');
+                $.ajax({
+                    url: '@Url.Action("DeleteCategory", "Home")',
+                    type: 'POST',
+                    data: {
+                        id: id
+                    },
+                    traditional: true,
+                    dataType: 'json'
+                }).done(function (response) {
+                    document.location.reload(true);
+                });
+            });
+    </script>
+}
